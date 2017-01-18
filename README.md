@@ -1,8 +1,6 @@
 # CS205 Feature Selection
 Project for CS205
 #Problem Statement
-Nearest neighbor algorithm is very simple, yet very competitive classification algorithm. But it
-is very sensitive to irrelevant features which can degrade the accuracy of the classifier.
 Given a Dataset we have to find out the most importance features present in the data. We have
 to use following searches/methods to find out relevant features.
 
@@ -13,16 +11,6 @@ to use following searches/methods to find out relevant features.
 • Our Original Algorithm.
 
 #Feature Selection
-Feature selection is the process of selecting a subset of relevant features for the use of model
-construction.[1]
-Feature selection techniques are used for following reasons:
-
-• simplification of models to make them more interpretable.
-
-• reduce training time.
-
-• reduce overfitting.
-
 In a large data set many features are either redundant or irrelevant and thus can be removed
 without incurring much loss of information.
 Two of the most important methods to select subset of relevant features is:
@@ -36,7 +24,8 @@ Two of the most important methods to select subset of relevant features is:
 In this method we start with empty set. Sequentially we add the features which maximizes the
 accuracy when combined with the features that have already been selected. We do this till all
 features are selected then we select the subset which resulted in best accuracy.
-Implementation
+
+#Sequential Forward Selection Implementation
 I used fitcknn method for knn training, crossval for ”leave one out” validation and kfoldloss
 to calculate the loss which is subtracted by 1.00 to give the accuracy of the classifier.
 
@@ -46,13 +35,13 @@ Sequentially we remove each features and check the accuracy and select that whic
 the accuracy when it is removed from the set. We do this till features set is empty and then we
 select the subset which gave the best accuracy.
 
-#Implementation
-Same as in forward selection i used fitcknn method for knn training, crossval for ”leave one
+#Sequential Backward Selection Implementation
+Same as in forward selection I used fitcknn method for knn training, crossval for ”leave one
 out” validation and kfoldloss to calculate the loss which is subtracted by 1.00 to give the ac-
 curacy of the classifier. I used horzcat method as well for the concatenation of two matrices
 in horizontal manner.
 
-#My Solutions
+#My Solution
 Even though nearest neighbor is quite powerful but it is very slow because of number of com-
 parisons done each points for classification. Computational cost grows exponentially with the
 increase in dimensions. To overcome this issue I utilized the power of decision trees, I choose
