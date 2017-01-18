@@ -1,6 +1,6 @@
 # CS205 Feature Selection
 Project for CS205
-#Problem Statement
+##Problem Statement
 Given a Dataset we have to find out the most importance features present in the data. We have
 to use following searches/methods to find out relevant features.
 
@@ -10,7 +10,7 @@ to use following searches/methods to find out relevant features.
 
 • Our Original Algorithm.
 
-#Feature Selection
+##Feature Selection
 In a large data set many features are either redundant or irrelevant and thus can be removed
 without incurring much loss of information.
 Two of the most important methods to select subset of relevant features is:
@@ -19,50 +19,48 @@ Two of the most important methods to select subset of relevant features is:
 
 • Sequential backward selection.
 
-#Sequential Forward Selection
+##Sequential Forward Selection
 
 In this method we start with empty set. Sequentially we add the features which maximizes the
 accuracy when combined with the features that have already been selected. We do this till all
 features are selected then we select the subset which resulted in best accuracy.
 
-#Sequential Forward Selection Implementation
-I used fitcknn method for knn training, crossval for ”leave one out” validation and kfoldloss
+##Sequential Forward Selection Implementation
+I used **_fitcknn_** method for knn training, **_crossval_** for "leave one out" validation and **_kfoldloss_**
 to calculate the loss which is subtracted by 1.00 to give the accuracy of the classifier.
 
-#Sequential Backward Selection
+##Sequential Backward Selection
 This method is similar but performed exactly opposite. we start with all features selected.
 Sequentially we remove each features and check the accuracy and select that which maximizes
 the accuracy when it is removed from the set. We do this till features set is empty and then we
 select the subset which gave the best accuracy.
 
-#Sequential Backward Selection Implementation
-Same as in forward selection I used fitcknn method for knn training, crossval for ”leave one
-out” validation and kfoldloss to calculate the loss which is subtracted by 1.00 to give the ac-
-curacy of the classifier. I used horzcat method as well for the concatenation of two matrices
-in horizontal manner.
+##Sequential Backward Selection Implementation
+Same as in forward selection I used **_fitcknn_** method for knn training, **_crossval_** for "leave one
+out" validation and **_kfoldloss_** to calculate the loss which is subtracted by 1.00 to give the accuracy of the classifier. I used horzcat method as well for the concatenation of two matrices in horizontal manner.
 
-#My Solution
-Even though nearest neighbor is quite powerful but it is very slow because of number of com-
-parisons done each points for classification. Computational cost grows exponentially with the
+##My Solution
+Even though nearest neighbor is quite powerful but it is very slow because of number of comparisons done each points for classification. Computational cost grows exponentially with the
 increase in dimensions. To overcome this issue I utilized the power of decision trees, I choose
 boosting for this project.
 
 I created decision tree for the whole data and then choose top 5 features of decision tree which it
 is using to make decisions. Then I calculated accuracy of each of the features and then selected
 top 2 features with better accuracy, since our data is strongly correlated to two features.
-Implementation
 
-I used fitensemble method to train a decision tree using X & Y. Then I used predictor Importance method to find out all the important decisions used in decision tree which gives a
+##My Solution Implementation
+
+I used **_fitensemble_** method to train a decision tree using X & Y. Then I used **_predictorImportance_** method to find out all the important decisions used in decision tree which gives a
 floating number for all the features. After sorting that array in descending order I picked top
-5 decisions and then using fitcknn I calculated the accuracy of each features and then sorted
+5 decisions and then using **_fitcknn_** I calculated the accuracy of each features and then sorted
 the accuracy in descending order and picked top 2 features and calculated accuracy of that subset.
 
 #Explanation
 I tried to implement a method which reduces the time to find feature subset substantially thats
-why I picked boosting(AdaBoost to be specific). Then I used boosting to find the important
+why I picked boosting(**AdaBoost** to be specific). Then I used boosting to find the important
 features. The reason for improvement in time can be seen with respect to the forward selection
 and backward elimination is due to reduction in training decision trees. Decision trees complex-
-ity does not increases with the increase in features in data. AdaBoost training process selects
+ity does not increases with the increase in features in data. **AdaBoost** training process selects
 only those features known to improve the the model, reducing dimensionality and potentially
 improving execution time as irrelevant features do not need to be computed.
 
@@ -104,4 +102,4 @@ Nearest neighbor algorithm is very powerful tool for the feature selection as we
 classification. But with increase in the dimension computational cost increases exponentially.
 So in conclusion we should use nearest neighbor algorithm when the number of features is less
 for the dataset. If the number of features is quite large then we should explore other options
-for feature selection for example decision trees, PCA etc.
+for feature selection for example **decision trees**, **PCA** etc.
