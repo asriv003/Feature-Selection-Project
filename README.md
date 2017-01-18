@@ -1,28 +1,37 @@
-# cs205_feature_selection
+# CS205 Feature Selection
 Project for CS205
 #Problem Statement
 Nearest neighbor algorithm is very simple, yet very competitive classification algorithm. But it
 is very sensitive to irrelevant features which can degrade the accuracy of the classifier.
 Given a Dataset we have to find out the most importance features present in the data. We have
 to use following searches/methods to find out relevant features.
+
 • Forward Selection
+
 • Backward Elimination
+
 • Our Original Algorithm.
 
 #Feature Selection
 Feature selection is the process of selecting a subset of relevant features for the use of model
 construction.[1]
 Feature selection techniques are used for following reasons:
+
 • simplification of models to make them more interpretable.
+
 • reduce training time.
+
 • reduce overfitting.
 
 In a large data set many features are either redundant or irrelevant and thus can be removed
 without incurring much loss of information.
 Two of the most important methods to select subset of relevant features is:
+
 • Sequential forward selection.
+
 • Sequential backward selection.
-Sequential Forward Selection
+
+#Sequential Forward Selection
 
 In this method we start with empty set. Sequentially we add the features which maximizes the
 accuracy when combined with the features that have already been selected. We do this till all
